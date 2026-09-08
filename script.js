@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   "use strict";
 
-  var css = document.createElement("style");
+  let css = document.createElement("style");
   css.textContent = `
     html { scroll-behavior: smooth; }
     body.mac-modal-open { overflow: hidden; }
@@ -21,34 +21,25 @@ document.addEventListener("DOMContentLoaded", function () {
   `;
   document.head.appendChild(css);
 
-  var menu = document.getElementById("menu");
-  var nav = document.getElementById("navlinks");
-  function closeNav() {
-    if (!menu || !nav) return;
-    nav.classList.remove("open");
-    menu.textContent = "☰";
-    menu.setAttribute("aria-expanded", "false");
-  }
-  if (menu && nav) {
-    menu.setAttribute("aria-expanded", "false");
-    menu.addEventListener("click", function () {
-      var open = nav.classList.toggle("open");
-      menu.textContent = open ? "✕" : "☰";
-      menu.setAttribute("aria-expanded", String(open));
-    });
-    nav.querySelectorAll("a").forEach(function (a) { a.addEventListener("click", closeNav); });
-  }
+  const hamburger = document.getElementById('hamburger');
+  const navMenu = document.getElementById('nav-menu');
+
+  hamburger.addEventListener('click', () => {
+    hamburger.classList.toggle('active');
+    navMenu.classList.toggle('active');
+  });
+
 
   document.querySelectorAll('a[href^="#"]').forEach(function (a) {
     a.addEventListener("click", function (e) {
-      var selector = a.getAttribute("href");
+      let selector = a.getAttribute("href");
       if (!selector || selector === "#") return;
-      var target = document.querySelector(selector);
+      let target = document.querySelector(selector);
       if (target) { e.preventDefault(); target.scrollIntoView({ behavior: "smooth", block: "start" }); }
     });
   });
 
-  var videos = Array.prototype.slice.call(document.querySelectorAll("video"));
+  let videos = Array.prototype.slice.call(document.querySelectorAll("video"));
   videos.forEach(function (video) {
     video.addEventListener("play", function () {
       videos.forEach(function (other) { if (other !== video) other.pause(); });
@@ -59,10 +50,10 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  var revealItems = document.querySelectorAll(".video-card, .benefit, .price, .quote, .step, .trainer, .cta, .head");
+  let revealItems = document.querySelectorAll(".video-card, .benefit, .price, .quote, .step, .trainer, .cta, .head");
   revealItems.forEach(function (el) { el.classList.add("mac-reveal"); });
   if ("IntersectionObserver" in window) {
-    var observer = new IntersectionObserver(function (entries) {
+    let observer = new IntersectionObserver(function (entries) {
       entries.forEach(function (entry) {
         if (entry.isIntersecting) { entry.target.classList.add("mac-visible"); observer.unobserve(entry.target); }
       });
@@ -81,10 +72,10 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  var footer = document.querySelector("footer");
+  let footer = document.querySelector("footer");
   if (footer) footer.innerHTML = footer.innerHTML.replace(/©\s*\d{4}/, "© " + new Date().getFullYear());
 
-  var modal = document.createElement("div");
+  let modal = document.createElement("div");
   modal.className = "mac-modal";
   modal.setAttribute("aria-hidden", "true");
   modal.innerHTML = `
@@ -99,16 +90,16 @@ document.addEventListener("DOMContentLoaded", function () {
     </div>`;
   document.body.appendChild(modal);
 
-  var modalTitle = document.getElementById("macModalTitle");
-  var modalText = document.getElementById("macModalText");
-  var modalWhatsApp = document.getElementById("macModalWhatsApp");
-  var closeButton = modal.querySelector(".mac-modal-close");
+  let modalTitle = document.getElementById("macModalTitle");
+  let modalText = document.getElementById("macModalText");
+  let modalWhatsApp = document.getElementById("macModalWhatsApp");
+  let closeButton = modal.querySelector(".mac-modal-close");
 
   function openEnrollment(type) {
-    var oneOnOne = type === "one";
+    let oneOnOne = type === "one";
     modalTitle.textContent = oneOnOne ? "One-on-One AI Training" : "MAC AI COURSE TRAINING";
     modalText.textContent = oneOnOne ? "Private one-on-one training with Andrew Mavins — ₦9,999." : "10-day practical AI video training — ₦7,999.";
-    var message = oneOnOne ? "Hello Andrew, I want the one-on-one MAC AI training." : "Hello Andrew, I want to enroll for MAC AI COURSE TRAINING.";
+    let message = oneOnOne ? "Hello Andrew, I want the one-on-one MAC AI training." : "Hello Andrew, I want to enroll for MAC AI COURSE TRAINING.";
     modalWhatsApp.href = "https://wa.me/2349116833478?text=" + encodeURIComponent(message);
     modal.classList.add("is-open");
     modal.setAttribute("aria-hidden", "false");
@@ -121,7 +112,7 @@ document.addEventListener("DOMContentLoaded", function () {
     document.body.classList.remove("mac-modal-open");
   }
 
-  var pricingButtons = document.querySelectorAll("#pricing .price a.btn");
+  let pricingButtons = document.querySelectorAll("#pricing .price a.btn");
   if (pricingButtons.length >= 2) {
     pricingButtons[0].addEventListener("click", function (e) { e.preventDefault(); openEnrollment("course"); });
     pricingButtons[1].addEventListener("click", function (e) { e.preventDefault(); openEnrollment("one"); });
