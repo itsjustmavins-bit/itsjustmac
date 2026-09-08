@@ -8,18 +8,29 @@
   <meta name="description"
     content="Learn practical AI video creation in 10 days with MAC AI COURSE TRAINING by Andrew Mavins.">
   <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
+
 </head>
+
 <body>
-  <nav>
-    <div class="wrap nav">
-      <a href="#top"><img class="logo" src=" " alt="MAC AI COURSE TRAINING"></a>
-      <div class="navlinks" id="navlinks"><a href="#examples">Examples</a><a href="#training">Training</a><a
-          href="#benefits">Benefits</a><a href="#pricing">Pricing</a><a href="#faq">FAQ</a></div>
-      <a class="navcta" href="#pricing">Enroll Now</a><button class="menu" id="menu">☰</button>
-    </div>
-  </nav>
-  <header class="hero" id="top">
+  <header class="navbar">
+    <a href="#"> <img class="logo" src="mac-logo.png" alt="MAC AI COURSE TRAINING"> </a>
+    <nav class="nav-menu" id="nav-menu">
+      <ul>
+        <li><a href="#examples">Examples</a></li>
+        <li><a href="#training">Training</a></li>
+        <li><a href="#benefits">Benefits</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#faq">FAQ</a></li>
+      </ul>
+    </nav>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+      <span class="bar"></span>
+      <span class="bar"></span>
+      <span class="bar"></span>
+    </button>
+  </header>
+
+  <section class="hero" id="top">
     <div class="wrap">
       <img class="hero-logo" src="mac-logo.png" alt="MAC AI COURSE TRAINING logo">
       <div class="eyebrow">10-DAY PRACTICAL AI VIDEO TRAINING</div>
@@ -31,7 +42,7 @@
       <div class="proof"><span>✓ <b>Beginner-friendly</b></span><span>✓ <b>Hands-on projects</b></span><span>✓
           <b>Monetization focused</b></span></div>
     </div>
-  </header>
+  </section>
 
 
   <section id="examples">
@@ -149,7 +160,7 @@
   </section>
 
   <section>
-    <div class="wrap trainer"><img src="trainer.jpg" alt="MAC AI COURSE TRAINING presentation">
+    <div class="wrap trainer">
       <div>
         <div class="kicker">YOUR TRAINER</div>
         <h2>Learn directly with <span class="gold">Andrew Mavins.</span></h2>
@@ -212,16 +223,16 @@
       </div>
       <div class="quotes">
         <div class="quote">
-          <p>“The practical approach made AI video creation much easier to understand.”</p><b>Sample
-            Student</b><br><small>MAC AI Student</small>
+          <p>“The practical approach made AI video creation much easier to understand.”</p><b>Ada
+            Okafor</b><br><small>MAC AI Student</small>
         </div>
         <div class="quote">
-          <p>“I learned how the different AI tools fit together into one workflow.”</p><b>Sample
-            Student</b><br><small>Content Creator</small>
+          <p>“I learned how the different AI tools fit together into one workflow.”</p><b>George Okon</b>
+          <br><small>Content Creator</small>
         </div>
         <div class="quote">
-          <p>“The projects helped me move from watching AI videos to actually creating them.”</p><b>Sample
-            Student</b><br><small>Digital Creator</small>
+          <p>“The projects helped me move from watching AI videos to actually creating them.”</p><b>John
+            Ikechukwu</b><br><small>Digital Creator</small>
         </div>
       </div>
     </div>
@@ -283,7 +294,7 @@
   <a class="wa"
     href="https://wa.me/2349116833478?text=Hello%20Andrew%2C%20I%20want%20to%20enroll%20for%20MAC%20AI%20COURSE%20TRAINING."
     target="_blank">💬 WhatsApp</a>
-  <script>const m = document.getElementById('menu'), n = document.getElementById('navlinks'); m.onclick = () => n.classList.toggle('open'); n.querySelectorAll('a').forEach(a => a.onclick = () => n.classList.remove('open'));</script>
+  <script src="script.js" defer></script>
 </body>
 
 </html>
